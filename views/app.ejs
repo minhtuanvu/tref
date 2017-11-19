@@ -1,0 +1,17 @@
+<% include partials/header %>
+  <h2><%= title %></h2>
+  <table id="ref-table">
+  <tr>
+    <% table.column.forEach(function(column) { %>
+      <th><%= column.name %></th>
+    <% }) %>
+  </tr>
+    <% table.column[0].value.forEach(function(row, rIdx) { %>
+    <tr>
+      <% table.column[rIdx].value.forEach(function(value, cIdx) { %>
+        <td><%= value %></td>
+      <% }) %>
+    </tr>
+    <% }) %>
+</table>
+<% include partials/footer %>

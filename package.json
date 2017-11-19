@@ -1,0 +1,22 @@
+{
+  "name": "tref",
+  "version": "1.0.0",
+  "description": "T24 References",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ssethupathi@temenos.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "jdbc": "^0.6.0",
+    "mongoose": "^4.13.3",
+    "node-stringify": "^0.2.1",
+    "path": "^0.12.7",
+    "trireme-jdbc": "^1.0.1"
+  }
+}
