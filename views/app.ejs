@@ -1,17 +1,9 @@
 <% include partials/header %>
   <h2><%= title %></h2>
-  <table id="ref-table">
-  <tr>
-    <% table.column.forEach(function(column) { %>
-      <th><%= column.name %></th>
-    <% }) %>
-  </tr>
-    <% table.column[0].value.forEach(function(row, rIdx) { %>
-    <tr>
-      <% table.column[rIdx].value.forEach(function(value, cIdx) { %>
-        <td><%= value %></td>
-      <% }) %>
-    </tr>
-    <% }) %>
-</table>
+  <form id="form-country_v1" name="form-country_v1">    
+    <div id="the-basics">
+      <input class="typeahead" type="text" placeholder="States of USA">
+    </div>
+</div>
+</form>
 <% include partials/footer %>
