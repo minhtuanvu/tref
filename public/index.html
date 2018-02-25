@@ -10,7 +10,7 @@ $(document).ready(function(){
     $('input.typeahead').typeahead({
         name: 'countries',
         remote: 'http://localhost:3000/search?key=%QUERY',
-        limit: 10
+        limit: 1000
     });
 });
 </script>
@@ -22,13 +22,13 @@ $(document).ready(function(){
 }
 .typeahead, .tt-query, .tt-hint {
 	border: 1px solid #D3D3D3;
-	border-radius: 8px;
+	border-radius: 0px;
 	font-size: 24px;
-	height: 30px;
-	line-height: 30px;
+	height: 25px;
+	line-height: 25px;
 	outline: medium none;
 	padding: 8px 12px;
-	width: 396px;
+	width: 600px;
 }
 .typeahead {
 	background-color: #FFFFFF;
@@ -67,10 +67,10 @@ $(document).ready(function(){
 </head>
 <body>
    <div class="page-header">
-        <h3>tref</h3>
+        <h3>Search for cities</h3>
     </div>
     <div class="bs-example">
-        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search...">
+        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="like india/chennai..">
     </div>
 </body>
 </html>
