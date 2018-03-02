@@ -1,78 +1,47 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>tref</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script  type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('input.typeahead').typeahead({
-        name: 'countries',
-        remote: 'http://localhost:3000/search?key=%QUERY',
-        limit: 1000
-    });
-});
-</script>
-<style type="text/css">
-.bs-example{
-	font-family: sans-serif;
-	position: relative;
-	margin: 50px;
-}
-.typeahead, .tt-query, .tt-hint {
-	border: 1px solid #D3D3D3;
-	border-radius: 0px;
-	font-size: 24px;
-	height: 25px;
-	line-height: 25px;
-	outline: medium none;
-	padding: 8px 12px;
-	width: 500px;
-}
-.typeahead {
-	background-color: #FFFFFF;
-}
-.typeahead:focus {
-	border: 1px solid #A9A9A9;
-}
-.tt-query {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}
-.tt-hint {
-	color: #999999;
-}
-.tt-dropdown-menu {
-	background-color: #FFFFFF;
-	border: 0px solid rgba(0, 0, 0, 0.2);
-	border-radius: 0px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	margin-top: 12px;
-	padding: 8px 0;
-	width: 500px;
-}
-.tt-suggestion {
-	font-size: 20px;
-	line-height: 20px;
-	padding: 3px 20px;
-}
-.tt-suggestion.tt-is-under-cursor {
-	background-color: #0097CF;
-	color: #FFFFFF;
-}
-.tt-suggestion p {
-	margin: 0;
-}
-</style>
-</head>
-<body>
-   <div class="page-header">
-        <h1>tref</h1>
-    </div>
-    <div class="bs-example">
-        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for citities">
-        <label for="Took ">Took 0 seconds</label>
-        <label for="For">for 0 results</label>
-    </div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>tref</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://bootswatch.com/4/simplex/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar bg-dark">
+      <a class="navbar-brand" href="#">tref</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="nav navbar-nav">
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="searchContainer">
+        <h1>Search cities</h1>
+        <p class="lead">Enter country and citi name</p>
+        <input type="text" id="search" class="form-control" placeholder="Search" />
+      </div>
+      <br>
+      <div id="cities"></div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
