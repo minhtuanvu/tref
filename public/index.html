@@ -28,7 +28,7 @@ $(document).ready(function(){
 	line-height: 25px;
 	outline: medium none;
 	padding: 8px 12px;
-	width: 600px;
+	width: 500px;
 }
 .typeahead {
 	background-color: #FFFFFF;
@@ -44,12 +44,12 @@ $(document).ready(function(){
 }
 .tt-dropdown-menu {
 	background-color: #FFFFFF;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 8px;
+	border: 0px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin-top: 12px;
 	padding: 8px 0;
-	width: 422px;
+	width: 500px;
 }
 .tt-suggestion {
 	font-size: 20px;
@@ -67,10 +67,12 @@ $(document).ready(function(){
 </head>
 <body>
    <div class="page-header">
-        <h3>Search for cities</h3>
+        <h1>tref</h1>
     </div>
     <div class="bs-example">
-        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="like india/chennai..">
+        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for citities">
+        <label for="Took ">Took 0 seconds</label>
+        <label for="For">for 0 results</label>
     </div>
 </body>
 </html>
