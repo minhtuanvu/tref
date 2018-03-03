@@ -22,27 +22,46 @@ var load = function() {
   });
 }
 
+var fetch = function(chars, callback) {
+  let result = {
+    name: "India",
+    props: [
+      {key: "Name", value: "Republic of India"},
+      {key: "Continent", value: "ASIA"},
+      {key: "Governance", value: "Parliamentary Democracy"},
+      {key: "Population", value: "2-nd"},
+      {key: "GDP", value: "5-th"},
+      {key: "Index1", value: "3"},
+      {key: "Index2", value: "78"}
+    ]
+  }
+  callback(result);
+}
+
 var search = function(chars, callback) {
   let query = encodeURI(buildQuery(chars));
   client.search(query, function(err, obj) {
     let matched = [];
+    let profiles = [];
     if (err) {
-      logger.log.debug('Search failed', err);
+      callback(err);
     } else {
       let docs = obj.response.docs;
       if (docs.length > 0) {
-        matched = matcher(chars, docs);
+        matcher(chars, docs, function(matched, profiles) {
+          callback(null, matched, profiles);
+        });
       }
     }
-    callback(err, matched);
   })
 }
 
-var matcher = function(chars, docs) {
+var matcher = function(chars, docs, result) {
   let slashExist = isSlashExist(chars);
   let parent = extractParent(chars);
   let child = extractChild(chars);
   let matched = [];
+  let profiles = [];
   if (!slashExist) {
     for (var idx = 0; idx < docs.length; idx++) {
       matched.push(docs[idx].name[0]);
@@ -53,12 +72,14 @@ var matcher = function(chars, docs) {
       let city = cities[idx];
       var regex = new RegExp(child, 'i');
       if (city.name.match(regex) || (!child && slashExist)) {
-        let pushed  = city.name + ' State:' + city.state + ' Location:'+city.location;
-        matched.push(pushed);
+        let pushed  = city.name;
+        let profile = 'State:' + city.state + ' Location:'+city.location;
+        matched.push(parent + '/' + pushed);
+        profiles.push(profile);
       }
     }
   }
-  return matched;
+  result(matched, profiles);
 }
 
 var buildQuery = function(chars) {
@@ -96,5 +117,6 @@ var isSlashExist = function(chars) {
 
 module.exports = {
   load: load,
-  search: search
+  search: search,
+  fetch: fetch
 }

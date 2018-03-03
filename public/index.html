@@ -4,13 +4,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>tref</title>
+    <title>Search cities</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://bootswatch.com/4/simplex/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
   </head>
 
   <body>
@@ -29,12 +29,11 @@
 
     <main class="container">
       <div class="searchContainer">
-        <h1>Search cities</h1>
         <p class="lead">Enter country and citi name</p>
-        <input type="text" id="search" class="form-control" placeholder="Search" />
+        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Search for citities">
       </div>
       <br>
-      <div id="cities"></div>
+      <div id="props"></div>
     </main>
 
     <script
@@ -42,6 +41,38 @@
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
+    <script  type="text/javascript" src="typeahead.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('input.typeahead').typeahead({
+            name: 'countries',
+            remote: 'http://localhost:3000/search?key=%QUERY',
+            limit: 100,
+        }).on('typeahead:selected', function(evt, item) {
+          $('#props').html("");
+          console.log(item);
+          $.ajax({
+            url: 'http://localhost:3000/fetch?key=%QUERY'
+          }).done(function(result) {
+            console.log(result);
+            $.each(result.props, function(idx, prop){
+              console.log(prop.key, prop.value);
+              $('#props').append(`
+                <div class="well">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <strong>${prop.key}</strong>
+                    </div>
+                    <div class="col-md-3">
+                      ${prop.value}
+                    </div>
+                  </div>
+                </div>
+              `)
+            });
+          })
+        });
+      });
+    </script>
   </body>
 </html>
