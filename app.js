@@ -30,10 +30,17 @@ app.get('/fetch',function(req,res) {
   });
 });
 
+// app.get('/load', function(req, res) {
+//   logger.log.debug('Load requsted');
+//   solr.load();
+//   res.status(200).send('Loading completed!');
+// });
+
 app.get('/load', function(req, res) {
-  logger.log.debug('Load requsted');
-  solr.load();
-  res.status(200).send('Loading completed!');
+  let t24loader = require('./t24-loader');
+  t24loader.load(function(result) {
+    res.send(result);
+  })
 });
 
 app.get('/t24apps', function(req, res) {
